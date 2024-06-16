@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Father's Day</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+        .envelope-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .envelope {
+            margin-bottom: 30px;
+            background-image: url('https://i.pinimg.com/564x/27/cc/9e/27cc9ecae7cacfa7fee02148e491814a.jpg') ;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: black;
+            color: gold;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card {
+            width: 1000px;
+            background-image: url(background\ 1.jpg);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none; /* Initially hidden */
+            text-align: center;
+            position: relative;
+        }
+        .content {
+            padding: 40px;
+            color: gold; /* Set text color to gold */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Fill the card height */
+        }
+        h1 {
+            font-size: 2.5em;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: gold; /* Set text color to gold */
+        }
+        p {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: gold; /* Set text color to gold */
+            line-height: 1.6; /* Adjust line height for readability */
+        }
+        .slideshow {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .slideshow img {
+            width: 40%;
+            height: 80%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .slideshow img.active {
+            transform: scale(1.1);
+        }
+        .slideshow .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .emojis {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .emoji {
+            font-size: 3em;
+            opacity: 0; /* Start hidden */
+            animation: pop-up 0.5s ease-in-out forwards; /* Animate and stay visible */
+        }
+        @keyframes pop-up {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            font-style: italic;
+            color: gold; /* Set text color to gold */
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope-container">
+        <div class="envelope" onclick="openCard()"></div>
+        <a href="#" class="button" onclick="openCard()">Open</a>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h1>Happy Father's Day</h1>
+            <p>Father's Day is a heartfelt celebration of the extraordinary men who have enriched our lives with their boundless love, guidance, and strength. <br>Today, we pause to appreciate Henry Gitau Nganga who has been our protector, teacher, and friend. <br> His steadfast support and endless patience has been the bedrock of our growth and happiness. From the smallest gestures to the grandest sacrifices, he has shown us what it means to love unconditionally and live honorably. <br> On this special day, we honor the profound influence of our father and express our deep gratitude for his enduring presence in our lives. <br>Happy Father's Day to our wonderful dad who makes the world a better place with his kindness and wisdom.</p>
+            <div class="emojis">
+                <span class="emoji">🎉</span>
+                <span class="emoji">🎈</span>
+                <span class="emoji">🥳</span>
+                <span class="emoji">🎁</span>
+                <span class="emoji">🍰</span>
+            </div>
+            <div class="slideshow">
+                <div class="slide"><img src="dad.jpg" alt="Slide 1" class="active"></div>
+                <div class="slide"><img src="WhatsApp Image 2024-06-16 at 10.36.42_3cf8fd34.jpg" alt="Slide 2"></div>
+                <div class="slide"><img src="WhatsApp Image 2024-06-16 at 10.36.43_919187f5.jpg" alt="Slide 3"></div>
+                <div class="slide"><img src="WhatsApp Image 2024-06-16 at 10.36.43_a72e7f2e.jpg" alt="Slide 4"></div>
+                <div class="slide"><img src="WhatsApp Image 2023-05-03 at 19.29.38_24370fe1.jpg" alt="Slide 5"></div>
+
+            </div>
+            <div class="footer">Made with love, from Loise</div>
+        </div>
+    </div>
+
+    <script>
+        function openCard() {
+            document.querySelector('.envelope-container').style.display = 'none';
+            document.querySelector('.card').style.display = 'block';
+            showEmojis();
+        }
+
+        function showEmojis() {
+            const emojis = document.querySelectorAll('.emoji');
+            emojis.forEach((emoji, index) => {
+                setTimeout(() => {
+                    emoji.style.opacity = '1';
+                }, index * 200);
+            });
+        }
+
+        let slideIndex = 0;
+        function showSlides() {
+            const slides = document.querySelectorAll('.slideshow .slide');
+            slides.forEach((slide, index) => {
+                if (index === slideIndex) {
+                    slide.style.display = 'flex';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        window.onload = () => {
+            showSlides();
+        };
+    </script>
+</body>
+</html>
